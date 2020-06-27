@@ -1,0 +1,14 @@
+<div class="dropdown">
+    <div ngbDropdown placement="bottom-right">
+      <button class="btn dropdown__select" ngbDropdownToggle> Hello </button>
+      <div class="dropdown__container" ngbDropdownMenu>
+        <button class="dropdown__container__back" (click)="closeModal()"> close Modal</button>
+        <span class="dropdown__container__title"> Title</span>
+        <button *ngFor="let item of items" class="dropdown__container__item" [ngClass]="{'selected':  item.selected}"
+          (click)="changeSelectedItem(item)">
+          {{item.displayText}}
+        </button>
+      </div>
+      <div class="dropdown__overlay"></div>
+    </div>
+  </div>
