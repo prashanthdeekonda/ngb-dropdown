@@ -45,7 +45,12 @@
     </svg>
 
   </div>
+<div class="card highlight-card card-small" style="margin-top: 30px">
+  <p>{{selectedItem | json }}</p>
+</div>
 
 
-   <app-ngb-dropdown></app-ngb-dropdown>
+   <app-ngb-dropdown [items]="items" (selectedItem)="dropdown($event)"></app-ngb-dropdown>
+
+   
 </div>

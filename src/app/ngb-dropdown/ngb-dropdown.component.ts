@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,11 +7,11 @@ import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./ngb-dropdown.component.scss'],
 })
 export class NgbDropdownComponent implements OnInit {
-  items = [
-    { id: 1, displayText: 'option 1', selected: true },
-    { id: 2, displayText: 'option 2', selected: false },
-    { id: 3, displayText: 'option 3', selected: false },
-  ];
+
+  @Input() items: any;
+  @Output() selectedItem = new EventEmitter<any>();
+
+  
 
   @ViewChild(NgbDropdown, { static: false }) private dropdown: NgbDropdown;
   constructor() {}
@@ -27,5 +27,6 @@ export class NgbDropdownComponent implements OnInit {
   changeSelectedItem(item) {
     this.items.forEach((option) => (option.selected = false));
     item.selected = true;
+    this.selectedItem.emit(item);
   }
 }
